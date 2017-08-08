@@ -2,12 +2,13 @@
   "name": "jsmind",
   "version": "1.0.0",
   "description": "jsMind ======",
-  "main": "js/jsmind.js",
+  "main": "jsmind.js",
   "directories": {
     "doc": "docs",
     "example": "example"
   },
   "scripts": {
+    "build": "webpack .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/xiaohuoz/jsmind#readme",
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "webpack": "^3.5.0"
   }
 }
