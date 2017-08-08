@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/xiaohuoz/jsmind/issues"
   },
-  "homepage": "https://github.com/xiaohuoz/jsmind#readme"
+  "homepage": "https://github.com/xiaohuoz/jsmind#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
 }

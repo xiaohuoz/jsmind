@@ -5,6 +5,8 @@
  * Project Home:
  *   https://github.com/hizzgdev/jsmind/
  */
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 (function($w){
     'use strict';       
@@ -34,6 +36,7 @@
     var $c = function(tag){return $d.createElement(tag);};
     var $t = function(n,t){if(n.hasChildNodes()){n.firstChild.nodeValue = t;}else{n.appendChild($d.createTextNode(t));}};
     var $h = function(n,t){n.innerHTML = t;};
+    var $r = function(n,t){ReactDOM.render(t,n)};
     // detect isElement
     var $i = function(el){return !!el&&(typeof el==='object')&&(el.nodeType===1)&&(typeof el.style==='object')&&(typeof el.ownerDocument==='object');};
     if(typeof String.prototype.startsWith != 'function'){String.prototype.startsWith=function(p){return this.slice(0,p.length)===p;};}
@@ -2185,6 +2188,7 @@
                 logger.error('the options.view.container was not be found in dom');
                 return;
             }
+            this.container = this.opts.container;
             this.e_panel = $c('div');
             this.e_canvas = $c('canvas');
             this.e_nodes = $c('jmnodes');
@@ -2332,8 +2336,10 @@
                 view_data.expander = d_e;
             }
             if (!!node.topic) {
-                if(this.opts.support_html){
+                if(this.opts.support_html === 'html'){
                     $h(d,node.topic);
+                }else if(this.opts.support_html === 'react'){
+                    $r(d,node.topic);
                 }else{
                     $t(d,node.topic);
                 }
@@ -2373,8 +2379,10 @@
             var view_data = node._data.view;
             var element = view_data.element;
             if (!!node.topic) {
-                if(this.opts.support_html){
+                if(this.opts.support_html === 'html'){
                     $h(element,node.topic);
+                }else if(this.opts.support_html === 'react'){
+                    $r(element,node.topic);
                 }else{
                     $t(element,node.topic);
                 }
@@ -2440,8 +2448,10 @@
                 element.style.zIndex = 'auto';
                 element.removeChild(this.e_editor);
                 if(jm.util.text.is_empty(topic) || node.topic === topic){
-                    if(this.opts.support_html){
+                    if(this.opts.support_html === 'html'){
                         $h(element,node.topic);
+                    }else if(this.opts.support_html === 'react'){
+                        $r(element,node.topic);
                     }else{
                         $t(element,node.topic);
                     }
